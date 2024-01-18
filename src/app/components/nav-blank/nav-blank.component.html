@@ -1,1 +1,66 @@
+<nav
+    class="navbar navbar-expand-md navbar-light bg-light shadow-sm"
+>
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">
+            <img src="./assets/img/freshcart-logo.svg" alt="freshcart-logo">
+        </a>
+        <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 fw-bold mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="home" routerLinkActive="active" aria-current="page"
+                        >Home
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="cart" routerLinkActive="active" aria-current="page"
+                        >Cart
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="products" routerLinkActive="active" aria-current="page"
+                        >Products
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="brand" routerLinkActive="active" aria-current="page"
+                        >Brand
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="categories" routerLinkActive="active" aria-current="page"
+                        >Categories
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mt-2 align-items-center fw-bold mt-lg-0">
+                <li class="nav-item d-flex gap-3 ">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-tiktok"></i>
+                </li>
+                <li>
+                    <span role="button" class="ms-3">SignOut</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 

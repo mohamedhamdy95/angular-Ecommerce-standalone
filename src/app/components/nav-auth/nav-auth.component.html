@@ -1,1 +1,44 @@
-<p>nav-auth works!</p>
+<nav
+    class="navbar navbar-expand-md navbar-light bg-light shadow-sm"
+>
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">
+            <img src="./assets/img/freshcart-logo.svg" alt="freshcart-logo">
+        </a>
+        <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+
+            <ul class="navbar-nav ms-auto mt-2 align-items-center fw-bold mt-lg-0">
+                <li class="nav-item d-flex gap-3 ">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-tiktok"></i>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="login" routerLinkActive="active" aria-current="page"
+                        >Login
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="register" routerLinkActive="active" aria-current="page"
+                        >Register
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

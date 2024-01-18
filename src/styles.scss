@@ -17,7 +17,11 @@ font-family: $fontFamily;
 {
   color:$ratingColor;
 }
-
+.active{
+  color: white !important;
+  background-color: $bgColor !important;
+  border-radius:  5px !important;
+}
 .cursor-pointer
 {
     cursor: pointer;
