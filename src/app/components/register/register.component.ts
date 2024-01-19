@@ -14,16 +14,13 @@ export class RegisterComponent {
   constructor(private _AuthService:AuthService){}
 
   registerForm : FormGroup = new FormGroup({
-    name : new FormControl(null,[Validators.required]),
-    email : new FormControl(null,[Validators.required,Validators.email]),
-    password: new FormControl(null,[Validators.required]),
-    rePassword : new FormGroup(null,[Validators.required]),
+    name : new FormControl('',[Validators.required , Validators.minLength(5),Validators.maxLength(30)]),
+    email : new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)]),
+    rePassword : new FormGroup(''),
+    phone : new FormGroup('',[Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]),
 
 
-    // "name": "Ahmed Abd Al-Muti",
-    // "email":"ahmedmutti@gmail.com",
-    // "password":"Ahmed@123",
-    // "rePassword":"Ahmed@123",
-    // "phone":"01010700700"
+
   })
 }
