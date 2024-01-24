@@ -42,6 +42,9 @@
                 <p class="mb-0" *ngIf="registerForm.get('phone')?.getError('pattern')" >this phone invalid</p>
             </div>
         </div>
-        <button [disabled]="registerForm.invalid"  class="main-btn">Register</button>
+        <button [disabled]="registerForm.invalid"class="main-btn">Register <span *ngIf="isLoading" ><i class="fa-solid fa-spinner fa-spin"></i></span>
+        </button>
     </form>
+    <div *ngIf="errMesg" class="alert alert-danger w-50 mx-auto mb-0 text-center">{{errMesg}}</div>
+    <div *ngIf="sucMesg" class="alert alert-success w-50 mx-auto mb-0 text-center">Registration Done</div>
 </section>
