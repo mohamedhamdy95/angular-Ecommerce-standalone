@@ -1,1 +1,25 @@
-<p>login works!</p>
+<section class="p-5 my-5 shadow rounded-5 w-50 m-auto" >
+    <h1 class="text-capitalize my-3">login <span class="text-main">now</span></h1>
+    <form [formGroup]="loginForm" (ngSubmit)="handleForm()">
+        <div class="form-item mb-3">
+            <label for="email" class="text-capitalize mb-2">email</label>
+            <input type="email" formControlName="email" class="form-control" id="email">
+            <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger p-1 small mt-2 w-50">
+                <p class="mb-0" *ngIf="loginForm.get('email')?.getError('required')" >email is required</p>
+                <p class="mb-0" *ngIf="loginForm.get('email')?.getError('email')" >this email invalid</p>
+            </div>
+        </div>
+        <div class="form-item mb-3">
+            <label for="password" class="text-capitalize mb-2">password</label>
+            <input type="password" formControlName="password" class="form-control" id="password">
+            <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger p-1 small mt-2 w-50">
+                <p class="mb-0" *ngIf="loginForm.get('password')?.getError('required')" >password is required</p>
+                <p class="mb-0" *ngIf="loginForm.get('password')?.getError('pattern')" >password min length 6</p>
+            </div>
+        </div>
+        <button [disabled]="loginForm.invalid"class="main-btn">login <span *ngIf="isLoading" ><i class="fa-solid fa-spinner fa-spin"></i></span>
+        </button>
+    </form>
+    <div *ngIf="errMesg" class="alert alert-danger w-50 mx-auto mb-0 text-center">{{errMesg}}</div>
+    <div *ngIf="sucMesg" class="alert alert-success w-50 mx-auto mb-0 text-center">Registration Done</div>
+</section>
