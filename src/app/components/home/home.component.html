@@ -1,1 +1,16 @@
-<p>gdgd</p>
+<section class="pb-5" *ngIf="productList.length > 0">
+  <h2 class="text-capitalize my-5 fw-bolder">popular <span class="text-main">products</span></h2>
+  <div class="row g-4">
+    <div *ngFor="let produc of productList | slice:0:24" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+      <div class="h-100 product">
+        <img [src]="produc.imageCover" class="w-100" [title]="produc.title" [alt]="produc.title">
+        <p class="text-main text-center small">{{produc.category.name}}</p>
+        <h5 class="fw-bold text-center">{{produc.title | cuttext:2}}</h5>
+        <div class="small d-flex align-items-center justify-content-between">
+          <div>{{produc.price | currency}}</div>
+          <div>{{produc.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
