@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   userInfo:any;
   baseUrl:string='https://ecommerce.routemisr.com/api/v1/auth/';
-  
+
   constructor(private _HttpClient:HttpClient) { }
   register(registerData:object):Observable<any>{
     return this._HttpClient.post(this.baseUrl+'signup',registerData)
@@ -19,7 +19,8 @@ export class AuthService {
   }
 
   decodeUser(){
-    const encodeToken = localStorage.getItem('usertoken')
+    const encodeToken = localStorage.getItem('eToken')
+    // console.log(encodeToken)
     if(encodeToken !== null){
       const decodeToken = jwtDecode(encodeToken)
       this.userInfo = decodeToken;

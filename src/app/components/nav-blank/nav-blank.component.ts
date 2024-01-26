@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav-blank',
@@ -10,5 +10,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrls: ['./nav-blank.component.scss']
 })
 export class NavBlankComponent {
+  constructor(private _Router:Router){}
+  signOut():void{
+    localStorage.removeItem('eToken');
+    this._Router.navigate(['/login'])
 
+  }
 }

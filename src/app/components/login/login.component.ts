@@ -35,15 +35,17 @@ export class LoginComponent {
     if(this.loginForm.valid === true){
       this._AuthService.login(userData).subscribe({
         next:(respons)=>{
+          console.log(respons)
           this.isLoading=false;
           if(respons.message === "success"){
-            this.userToken=respons.token;
-            localStorage.setItem('usertoken',this.userToken)
+            // this.userToken=respons.token;
+            // localStorage.setItem('usertoken',respons.token)
+            localStorage.setItem('eToken', respons.token )
             this._AuthService.decodeUser();
             this._Router.navigate(['/home'])
           }
          this.sucMesg = respons.message
-          // console.log(respons)
+          // console.log(this.userToken)
         },
         error:(err)=>{
           this.errMesg = err.error.message;

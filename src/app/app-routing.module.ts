@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from './core/guard/auth.guard';
 
 
 const routes: Routes = [
-  {path:'',loadComponent:()=> import('./layouts/blank-layout/blank-layout.component').then((c)=>c.BlankLayoutComponent),
+  {path:'',canActivate:[authGuard],loadComponent:()=> import('./layouts/blank-layout/blank-layout.component').then((c)=>c.BlankLayoutComponent),
   children:[
     {path:'',redirectTo:'home',pathMatch:'full'},
     {path:'home',loadComponent:()=> import('./components/home/home.component').then((c)=>c.HomeComponent),title:"Home"},

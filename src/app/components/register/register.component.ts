@@ -58,7 +58,7 @@ export class RegisterComponent {
           if(respons.message === "success"){
             this._Router.navigate(['/login'])
           }
-         this.sucMesg = respons.message
+        this.sucMesg = respons.message
           // console.log(respons)
         },
         error:(err)=>{
@@ -69,7 +69,7 @@ export class RegisterComponent {
         complete:()=>{}
       })
     }
-    console.log(userData)
+    // console.log(userData)
   }
 
 }
