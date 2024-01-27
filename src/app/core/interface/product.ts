@@ -16,10 +16,9 @@ export interface Product {
   description: string
   price: number
   imageCover: string
-  category: Category
+  category: CategoryProd
   ratingsAverage: number
 }
-export interface Category {
+export interface CategoryProd {
   name: string
 }
-

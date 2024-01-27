@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import{ HttpClientModule} from'@angular/common/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
