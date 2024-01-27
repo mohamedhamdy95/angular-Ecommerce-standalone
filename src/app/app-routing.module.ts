@@ -4,6 +4,7 @@ import { authGuard } from './core/guard/auth.guard';
 
 
 const routes: Routes = [
+  // blank
   {path:'',canActivate:[authGuard],loadComponent:()=> import('./layouts/blank-layout/blank-layout.component').then((c)=>c.BlankLayoutComponent),
   children:[
     {path:'',redirectTo:'home',pathMatch:'full'},
@@ -12,10 +13,11 @@ const routes: Routes = [
     {path:'brand',loadComponent:()=> import('./components/brands/brands.component').then((c)=>c.BrandsComponent),title:"Brand"},
     {path:'cart',loadComponent:()=> import('./components/cart/cart.component').then((c)=>c.CartComponent),title:"Cart"},
     {path:'products',loadComponent:()=> import('./components/products/products.component').then((c)=>c.ProductsComponent),title:"Products"},
-    // {path:'home',loadComponent:()=> import('./components/home/home.component').then((c)=>c.HomeComponent)},
+    {path:'details',loadComponent:()=> import('./components/product-detauls/product-detauls.component').then((c)=>c.ProductDetaulsComponent),title:"details"},
     // {path:'home',loadComponent:()=> import('./components/home/home.component').then((c)=>c.HomeComponent)},
   ]
 },
+// auth
   {path:'',loadComponent:()=> import('./layouts/auth-layout/auth-layout.component').then((c)=>c.AuthLayoutComponent),
     children:[
       {path:'',redirectTo:'login',pathMatch:'full'},
@@ -23,6 +25,7 @@ const routes: Routes = [
       {path:'register',loadComponent:()=> import('./components/register/register.component').then((c)=>c.RegisterComponent),title:"Register"},
     ]
   },
+  // notfound
   {path:'**',loadComponent:()=> import('./components/not-found/not-found.component').then((c)=>c.NotFoundComponent),title:"404"}
 
 ];

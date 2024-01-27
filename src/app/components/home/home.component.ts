@@ -5,14 +5,14 @@ import { Product } from 'src/app/core/interface/product';
 import { CuttextPipe } from "../../core/pipe/cuttext.pipe";
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Category } from 'src/app/core/interface/category';
- 
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
-    imports: [CommonModule, CuttextPipe,CarouselModule]
+    imports: [CommonModule, CuttextPipe,CarouselModule ,RouterLink]
 })
 export class HomeComponent implements OnInit {
   productList:Product[]=[]
@@ -41,7 +41,8 @@ categoreyOptions: OwlOptions = {
   touchDrag: true,
   pullDrag: false,
   autoplay:true,
-  autoplaySpeed:400,
+  autoplaySpeed:700,
+  autoplayTimeout:5000,
   dots: false,
   navSpeed: 700,
   navText: ['', ''],
@@ -59,7 +60,7 @@ categoreyOptions: OwlOptions = {
       items: 6
     }
   },
-  nav: true
+  nav: false
 }
 mainOptions: OwlOptions = {
   loop: true,
@@ -67,10 +68,9 @@ mainOptions: OwlOptions = {
   touchDrag: true,
   autoplay:true,
   autoplaySpeed:1000,
-  pullDrag: false,
-  dots: false,
-  navSpeed: 700,
-  navText: ['', ''],
+  autoplayTimeout:5000,
+  pullDrag: true,
+  dots: true,
   responsive: {
     0: {
       items: 1

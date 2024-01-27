@@ -10,7 +10,16 @@
   $fontFamily:'Encode Sans Expanded', sans-serif;
   $ratingColor:#ffc908;
 
-
+::-webkit-scrollbar{
+  width: 14px;
+}
+::-webkit-scrollbar-track{
+  background-color: $lightBgColor;
+}
+::-webkit-scrollbar-thumb{
+  background-color: $bgColor;
+  border-radius: 8px;
+}
 body{
 font-family: $fontFamily;
 }
@@ -18,7 +27,7 @@ font-family: $fontFamily;
 {
   color:$ratingColor;
 }
-.active{
+.activeL{
   color: white !important;
   background-color: $bgColor !important;
   border-radius:  5px !important;
@@ -39,7 +48,7 @@ border:1px solid $bgColor !important;
 }
 .product .btn{
   opacity: 0 !important;
-  transition:transform 1s ,opacity 1s !important;
+  transition:transform .5s ,opacity .5s !important;
   transform: translateY(100%) !important;
 }
 .product:hover .btn{
