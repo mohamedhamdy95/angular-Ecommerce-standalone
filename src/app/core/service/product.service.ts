@@ -16,7 +16,7 @@ export class ProductService {
   getCategories():Observable<any>{
     return this._HttpClient.get(this.baseUrl+`categories`)
   }
-  getDetails():Observable<any>{
-    return this._HttpClient.get(this.baseUrl+`categories`)
+  getProductDetails(id:any):Observable<any>{
+    return this._HttpClient.get(this.baseUrl+`products/${id}`)
   }
 }

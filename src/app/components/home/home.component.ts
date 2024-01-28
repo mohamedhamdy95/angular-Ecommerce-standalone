@@ -5,7 +5,7 @@ import { Product } from 'src/app/core/interface/product';
 import { CuttextPipe } from "../../core/pipe/cuttext.pipe";
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Category } from 'src/app/core/interface/category';
-import { Router, RouterLink } from '@angular/router';
+import {RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -43,7 +43,7 @@ categoreyOptions: OwlOptions = {
   autoplay:true,
   autoplaySpeed:700,
   autoplayTimeout:5000,
-  dots: false,
+  dots: true,
   navSpeed: 700,
   navText: ['', ''],
   responsive: {

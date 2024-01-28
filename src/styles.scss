@@ -53,6 +53,8 @@ border:1px solid $bgColor !important;
 }
 .product:hover .btn{
   opacity: 1 !important;
+  background-color: $bgColor !important;
+  color: white;
   transform: translateY(0%) !important;
 }
 a , a:hover{

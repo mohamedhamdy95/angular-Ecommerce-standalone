@@ -13,8 +13,7 @@ const routes: Routes = [
     {path:'brand',loadComponent:()=> import('./components/brands/brands.component').then((c)=>c.BrandsComponent),title:"Brand"},
     {path:'cart',loadComponent:()=> import('./components/cart/cart.component').then((c)=>c.CartComponent),title:"Cart"},
     {path:'products',loadComponent:()=> import('./components/products/products.component').then((c)=>c.ProductsComponent),title:"Products"},
-    {path:'details',loadComponent:()=> import('./components/product-detauls/product-detauls.component').then((c)=>c.ProductDetaulsComponent),title:"details"},
-    // {path:'home',loadComponent:()=> import('./components/home/home.component').then((c)=>c.HomeComponent)},
+    {path:'details/:id',loadComponent:()=> import('./components/product-detauls/product-detauls.component').then((c)=>c.ProductDetaulsComponent),title:"details"},
   ]
 },
 // auth

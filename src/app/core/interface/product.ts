@@ -10,6 +10,7 @@
 
 
 export interface Product {
+  _id?:string
   ratingsQuantity: number
   title: string
   slug: string

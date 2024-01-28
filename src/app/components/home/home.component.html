@@ -35,7 +35,7 @@
   <div class="row g-4">
     <div *ngFor="let produc of productList | slice:0:24" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <div class="h-100 product">
-          <header class="cursor-pointer " routerLink="/details">
+          <header class="cursor-pointer " [routerLink]="['/details',produc._id]">
               <img [src]="produc.imageCover" class="w-100" [title]="produc.title" [alt]="produc.title">
               <p class="text-main text-center small">{{produc.category.name}}</p>
               <h5 class="fw-bold text-center">{{produc.title | cuttext:2}}</h5>
@@ -45,7 +45,7 @@
               </div>
           </header>
           <footer>
-            <button class="text-capitalize btn main-btn w-100 my-1">add to cart <i class="fa-solid fa-plus"></i></button>
+            <button class="text-capitalize btn main-btn w-100 py-2 my-1">add to cart <i class="fa-solid fa-plus"></i></button>
           </footer>
         </div>
     </div>
