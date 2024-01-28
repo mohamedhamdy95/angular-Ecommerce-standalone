@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/core/service/product.service';
-import { Product } from 'src/app/core/interface/product';
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-product-detauls',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,CarouselModule],
   templateUrl: './product-detauls.component.html',
   styleUrls: ['./product-detauls.component.scss']
 })
@@ -31,5 +31,19 @@ ngOnInit(): void {
         console.log(err)
       }
     })
+}
+customOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: false,
+  autoplay:true,
+  dots: true,
+  navSpeed: 700,
+  responsive: {
+    0: {
+      items: 1
+    },
+  },
 }
 }
