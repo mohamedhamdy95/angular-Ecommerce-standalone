@@ -10,9 +10,21 @@
             </owl-carousel-o>
 
         </div>
-        <div class="col-md-9">
-            <h2>{{details.title}}</h2>
-            <p>{{details.description}}</p>
+        <div class="col-md-9 d-flex align-items-center">
+            <div class="w-100">
+                <header class="fs-4">
+                    <h2 class="fw-bolder my-3" >{{details.title}}</h2>
+                    <h5 class="my-3">{{details.description}}</h5>
+                    <h5 class="text-main">{{details.category.name}}</h5>
+                    <div class="small my-3 mt-2 d-flex align-items-center justify-content-between">
+                      <div>{{details.price | currency}}</div>
+                      <div>{{details.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></div>
+                    </div>
+                </header>
+                <footer>
+                  <button class="text-capitalize main-btn w-100 py-2 my-1 w-50 mx-auto">add to cart <i class="fa-solid fa-plus"></i></button>
+                </footer>
+            </div>
         </div>
     </div>
 </section>
