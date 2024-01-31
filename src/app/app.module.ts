@@ -6,7 +6,7 @@ import{ HttpClientModule} from'@angular/common/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +19,9 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     CarouselModule,
     RouterModule,
+    ToastrModule.forRoot({
+      timeOut: 1500
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

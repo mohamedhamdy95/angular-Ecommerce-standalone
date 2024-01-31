@@ -2,15 +2,15 @@
   <div class="row g-0">
     <div class="col-md-9">
       <owl-carousel-o [options]="mainOptions">
-        <ng-template carouselSlide> 
+        <ng-template carouselSlide>
           <img height="500" src="./assets/img/slider-1.jpeg" alt="slider">
-        </ng-template>  
-        <ng-template carouselSlide> 
+        </ng-template>
+        <ng-template carouselSlide>
           <img height="500" src="./assets/img/slider-2.jpeg" alt="slider">
-        </ng-template>  
-        <ng-template carouselSlide> 
+        </ng-template>
+        <ng-template carouselSlide>
           <img height="500" src="./assets/img/slider-3.png" alt="slider">
-        </ng-template>  
+        </ng-template>
       </owl-carousel-o>
     </div>
     <div class="col-md-3">
@@ -33,19 +33,19 @@
 <section class="pb-5" *ngIf="productList.length > 0">
   <h2 class="text-capitalize my-5 fw-bolder">popular <span class="text-main">products</span></h2>
   <div class="row g-4">
-    <div *ngFor="let produc of productList | slice:0:24" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+    <div *ngFor="let product of productList | slice:0:24" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <div class="h-100 product">
-          <header class="cursor-pointer " [routerLink]="['/details',produc._id]">
-              <img [src]="produc.imageCover" class="w-100" [title]="produc.title" [alt]="produc.title">
-              <p class="text-main text-center small">{{produc.category.name}}</p>
-              <h5 class="fw-bold text-center">{{produc.title | cuttext:2}}</h5>
+          <header class="cursor-pointer " [routerLink]="['/details',product._id]">
+              <img [src]="product.imageCover" class="w-100" [title]="product.title" [alt]="product.title">
+              <p class="text-main text-center small">{{product.category.name}}</p>
+              <h5 class="fw-bold text-center">{{product.title | cuttext:2}}</h5>
               <div class="small mt-2 d-flex align-items-center justify-content-between">
-                <div>{{produc.price | currency}}</div>
-                <div>{{produc.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></div>
+                <div>{{product.price | currency}}</div>
+                <div>{{product.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></div>
               </div>
           </header>
           <footer>
-            <button class="text-capitalize btn main-btn w-100 py-2 my-1">add to cart <i class="fa-solid fa-plus"></i></button>
+            <button #addBtn (click)="addProductToCart(product._id , addBtn)" class="text-capitalize btn main-btn w-100 py-2 my-1">add to cart <i class="fa-solid fa-plus"></i></button>
           </footer>
         </div>
     </div>

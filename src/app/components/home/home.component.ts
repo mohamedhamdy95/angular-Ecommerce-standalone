@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from 'src/app/core/service/product.service';
 import { Product } from 'src/app/core/interface/product';
 import { CuttextPipe } from "../../core/pipe/cuttext.pipe";
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Category } from 'src/app/core/interface/category';
-import {RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { CartService } from 'src/app/core/service/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-home',
@@ -17,7 +19,7 @@ import {RouterLink } from '@angular/router';
 export class HomeComponent implements OnInit {
   productList:Product[]=[]
   categorisList:Category[]=[]
-constructor(private _ProductService:ProductService){}
+constructor(private _ProductService:ProductService , private _CartService:CartService , private toaster:ToastrService , private _Renderer2:Renderer2){}
 ngOnInit(): void{
   this._ProductService.getProduct().subscribe({
     next:(respons)=>{
@@ -77,4 +79,23 @@ mainOptions: OwlOptions = {
     },
   },
 }
+
+// add product to cart
+
+addProductToCart(id:any , ele:HTMLButtonElement ):void{
+  this._Renderer2.setAttribute(ele,'disabled','true');
+  this._CartService.addToCart(id).subscribe({
+    next:(respons)=>{
+      this.toaster.success(respons.message)
+      console.log(respons)
+    },
+    error:(err)=>{
+      console.log(err)
+    },
+    complete:()=>{
+      this._Renderer2.removeAttribute(ele,'disabled');
+    }
+  })
+}
+
 }
