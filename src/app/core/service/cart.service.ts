@@ -11,7 +11,8 @@ myToken:any={
   token :localStorage.getItem('eToken')
 }
   constructor( private _HttpClient:HttpClient ) {}
-  addToCart(prodId:string):Observable<any>{
+
+addToCart(prodId:string):Observable<any>{
 return this._HttpClient.post(this.baseUrl +`cart`,
 {
   // body
@@ -22,5 +23,27 @@ return this._HttpClient.post(this.baseUrl +`cart`,
 headers: this.myToken
 }
 )
+}
+getCartUser():Observable<any>{
+  return this._HttpClient.get(this.baseUrl +`cart`,{headers:this.myToken})
+}
+
+deletCartItem(prodId:string):Observable<any>{
+  return this._HttpClient.delete(this.baseUrl+`cart/${prodId}`,
+  {
+    headers: this.myToken
   }
+  )
+}
+
+changeCount(id:string ,countNum:number ):Observable<any>{
+  return this._HttpClient.put(this.baseUrl + `cart/${id}`,
+  {
+    count: countNum
+  },
+  {
+    headers: this.myToken
+  }
+  )
+}
 }

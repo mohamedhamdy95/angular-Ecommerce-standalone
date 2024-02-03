@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { CartService } from 'src/app/core/service/cart.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
     selector: 'app-home',
     standalone: true,
@@ -87,10 +88,10 @@ addProductToCart(id:any , ele:HTMLButtonElement ):void{
   this._CartService.addToCart(id).subscribe({
     next:(respons)=>{
       this.toaster.success(respons.message)
-      console.log(respons)
+      // console.log(respons)
     },
     error:(err)=>{
-      console.log(err)
+      // console.log(err)
     },
     complete:()=>{
       this._Renderer2.removeAttribute(ele,'disabled');
