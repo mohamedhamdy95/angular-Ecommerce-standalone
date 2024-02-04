@@ -25,12 +25,6 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " routerLink="cart" routerLinkActive="activeL" aria-current="page"
-                        >Cart
-                        <span class="visually-hidden">(current)</span></a
-                    >
-                </li>
-                <li class="nav-item">
                     <a class="nav-link " routerLink="products" routerLinkActive="activeL" aria-current="page"
                         >Products
                         <span class="visually-hidden">(current)</span></a
@@ -50,7 +44,14 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mt-2 align-items-center fw-bold mt-lg-0">
-                <li class="nav-item d-flex gap-3 ">
+                <li class="nav-item">
+                    <a class="nav-link position-relative" routerLink="cart"  aria-current="page">
+                        <i class="fa-solid fa-cart-shopping fa-xl text-main"></i>
+                        <span class="badge bg-body-secondary text-main font-sm position-absolute top-0 end-0" >{{cartNum}}</span>
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item d-flex gap-3 mx-4 ">
                     <i class="fab fa-facebook"></i>
                     <i class="fab fa-instagram"></i>
                     <i class="fab fa-twitter"></i>

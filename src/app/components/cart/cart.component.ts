@@ -31,6 +31,7 @@ deleteItem(id:string , ele:HTMLButtonElement):void{
       this.toaster.error("Item Deleted");
       this.cartItems=respons.data;
       this._Renderer2.removeAttribute(ele ,"disabled")
+      this._CartService.cartNumber.next(respons.numOfCartItems)
       // console.log(respons);
     },
     error:(err)=>{
@@ -60,5 +61,19 @@ changeCouunt(count:number ,  id:string ,ele1: HTMLButtonElement ,ele2: HTMLButto
       }
   }
 
-
+  clearAll():void{
+    this._CartService.clearCart().subscribe({
+      next:(respons)=>{
+        if(respons.message === "success"){
+          this.toaster.error("You Deleted Your Cart");
+          this.cartItems=null;
+          this._CartService.cartNumber.next(0)
+        }
+        console.log(respons)
+      },
+      error:(err)=>{
+        console.log(err)
+      }
+    })
+  }
 }

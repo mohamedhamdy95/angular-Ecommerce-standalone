@@ -87,11 +87,12 @@ addProductToCart(id:any , ele:HTMLButtonElement ):void{
   this._Renderer2.setAttribute(ele,'disabled','true');
   this._CartService.addToCart(id).subscribe({
     next:(respons)=>{
-      this.toaster.success(respons.message)
-      // console.log(respons)
+      this.toaster.success(respons.message);
+      this._CartService.cartNumber.next(respons.numOfCartItems);
+      console.log(respons)
     },
     error:(err)=>{
-      // console.log(err)
+      console.log(err)
     },
     complete:()=>{
       this._Renderer2.removeAttribute(ele,'disabled');
