@@ -55,4 +55,18 @@ return this._HttpClient.delete(this.baseUrl+`cart`,
 )
 }
 
+checkOut(cartId:string|null , orderInfo:object):Observable<any>{
+return this._HttpClient.post(this.baseUrl+`orders/checkout-session/${cartId}?url=http://localhost:4200` 
+, 
+{
+  shippingAddress:orderInfo
+}
+, 
+{
+  headers:this.myToken
+}
+
+)
+}
+
 }

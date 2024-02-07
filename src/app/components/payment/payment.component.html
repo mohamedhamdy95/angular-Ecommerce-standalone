@@ -1,0 +1,18 @@
+<section class="w-50 mx-auto p-5 m-5 rounded shadow">
+    <h1 class="text-capitalize my-3">payment <span class="text-main">details</span></h1>
+    <form [formGroup]="orderForm" (ngSubmit)="handleForm()" >
+        <div class="form-item m-3 ">
+            <label for="details" class="fw-bold mb-2">Details:</label>
+            <input type="text" id="details" formControlName="details" class="form-control">
+        </div>
+        <div class="form-item m-3">
+            <label for="phone" class="fw-bold mb-2">Phone: </label>
+            <input type="tel" id="phone" formControlName="phone" class="form-control">
+        </div>
+        <div class="form-item m-3">
+            <label for="city" class="fw-bold mb-2">City: </label>
+            <input type="text" id="city" formControlName="city" class="form-control">
+        </div>
+        <button class="btn btn-outline-success text-capitalize mx-3">check out <i class="fa-solid fa-dollar-sign"></i></button>
+    </form>
+</section>
