@@ -1,1 +1,42 @@
-<p>products works!</p>
+<section class="pb-5" *ngIf="productList.length > 0">
+  <h2 class="text-capitalize my-5 fw-bolder text-center">
+    all <span class="text-main">products</span>
+  </h2>
+  <div class="row justify-content-center g-4">
+    <div
+      *ngFor="let product of productList"
+      class="col-sm-6 col-md-4 col-lg-3 col-xl-2"
+    >
+      <div class="h-100 product">
+        <header class="cursor-pointer" [routerLink]="['/details', product._id]">
+          <img
+            [src]="product.imageCover"
+            class="w-100"
+            [title]="product.title"
+            [alt]="product.title"
+          />
+          <p class="text-main text-center small">{{ product.category.name }}</p>
+          <h5 class="fw-bold text-center">{{ product.title | cuttext : 2 }}</h5>
+          <div
+            class="small mt-2 d-flex align-items-center justify-content-between"
+          >
+            <div>{{ product.price | currency }}</div>
+            <div>
+              {{ product.ratingsAverage }}
+              <i class="fa-solid fa-star rating-color"></i>
+            </div>
+          </div>
+        </header>
+        <footer>
+          <button
+            #addBtn
+            (click)="addProductToCart(product._id, addBtn)"
+            class="text-capitalize btn main-btn w-100 py-2 my-1"
+          >
+            add to cart <i class="fa-solid fa-plus"></i>
+          </button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
