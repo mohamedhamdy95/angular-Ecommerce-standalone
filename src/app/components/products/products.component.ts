@@ -6,20 +6,27 @@ import { ProductService } from 'src/app/core/service/product.service';
 import { Product } from 'src/app/core/interface/product';
 import { RouterLink } from '@angular/router';
 import { CuttextPipe } from "../../core/pipe/cuttext.pipe";
+import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
     selector: 'app-products',
     standalone: true,
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.scss'],
-    imports: [CommonModule, RouterLink, CuttextPipe]
+    imports: [CommonModule, RouterLink, CuttextPipe , NgxPaginationModule]
 })
 export class ProductsComponent implements OnInit {
   productList:Product[]=[]
+  pageSize:number=0;
+  p:number=1;
+  total:number=0;
 constructor(private _ProductService:ProductService , private _CartService:CartService , private toaster:ToastrService ,private _Renderer2:Renderer2){}
 ngOnInit(): void {
   this._ProductService.getProduct().subscribe({
     next:(respons)=>{
       this.productList = respons.data;
+      this.pageSize=respons.metadata.limit;
+      this.p=respons.metadata.currentPage;
+      this.total=respons.results;
       // console.log(this.productList)
     },
     error:(err)=> {
@@ -45,5 +52,18 @@ addProductToCart(id:any , ele:HTMLButtonElement ):void{
   })
 }
 
-
+pageChanged(event:any):void{
+  this._ProductService.getProduct(event).subscribe({
+    next:(respons)=>{
+      this.productList = respons.data;
+      this.pageSize=respons.metadata.limit;
+      this.p=respons.metadata.currentPage;
+      this.total=respons.results;
+      // console.log(this.productList)
+    },
+    error:(err)=> {
+      console.log(err)
+    },
+  });
+}
 }

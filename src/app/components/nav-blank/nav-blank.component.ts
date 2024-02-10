@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from 'src/app/core/service/cart.service';
@@ -11,8 +11,23 @@ import { CartService } from 'src/app/core/service/cart.service';
   styleUrls: ['./nav-blank.component.scss']
 })
 export class NavBlankComponent implements OnInit {
+
+
+
   cartNum:number=0;
-  constructor(private _Router:Router , private _CartService:CartService){}
+  constructor(private _Router:Router , private _CartService:CartService , private _Renderer2:Renderer2){}
+
+  @ViewChild('nav') navElem !: ElementRef
+  @HostListener('window:scroll')
+  onScroll():void{
+    if(scrollY > 300){
+      this._Renderer2.addClass(this.navElem.nativeElement , "px-5" )
+      this._Renderer2.addClass(this.navElem.nativeElement , "shadow-lg" )
+    }else{
+      this._Renderer2.removeClass(this.navElem.nativeElement , "px-5" )
+      this._Renderer2.removeClass(this.navElem.nativeElement , "shadow-lg" )
+    }
+  }
   ngOnInit(): void {
     this._CartService.cartNumber.subscribe({
       next:(data)=>{

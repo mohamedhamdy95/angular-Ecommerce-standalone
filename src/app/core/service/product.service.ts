@@ -10,8 +10,8 @@ export class ProductService {
   baseUrl:string='https://ecommerce.routemisr.com/api/v1/';
   constructor(private _HttpClient:HttpClient) {}
 
-  getProduct():Observable<any>{
-    return this._HttpClient.get(this.baseUrl+`products`)
+  getProduct(pageNum:number=1 ):Observable<any>{
+    return this._HttpClient.get(this.baseUrl+`products?page=${pageNum}`)
   }
   getCategories():Observable<any>{
     return this._HttpClient.get(this.baseUrl+`categories`)
