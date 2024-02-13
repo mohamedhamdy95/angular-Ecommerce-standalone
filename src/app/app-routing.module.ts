@@ -16,6 +16,7 @@ const routes: Routes = [
     {path:'details/:id',loadComponent:()=> import('./components/product-detauls/product-detauls.component').then((c)=>c.ProductDetaulsComponent),title:"Details"},
     {path:'payment/:id',loadComponent:()=> import('./components/payment/payment.component').then((c)=>c.PaymentComponent),title:"Payment"},
     {path:'allorders',loadComponent:()=> import('./components/all-orders/all-orders.component').then((c)=>c.AllOrdersComponent),title:"Orders"},
+    {path:'forgetpassword',loadComponent:()=> import('./components/forget-password/forget-password.component').then((c)=>c.ForgetPasswordComponent),title:"ForgetPassword"},
   ]
 },
 // auth
