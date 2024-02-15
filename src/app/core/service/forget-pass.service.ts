@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, retryWhen } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,14 @@ export class ForgetPassService {
   
   forgotPassword(userEmail:object):Observable<any>{
     return this._HttpClient.post(this.baseUrl + `forgotPasswords` , userEmail)
+  }
+
+  verifyResetCode(resetCode:object):Observable<any>{
+    return this._HttpClient.post(this.baseUrl+`verifyResetCode`,resetCode)
+  }
+
+  rsetPassword(rsetPasswordData:object):Observable<any>{
+    return this._HttpClient.put(this.baseUrl+`resetPassword`,rsetPasswordData)
   }
 
 }

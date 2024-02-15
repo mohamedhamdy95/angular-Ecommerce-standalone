@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ForgetPassService } from 'src/app/core/service/forget-pass.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-forget-password',
   standalone: true,
@@ -14,40 +16,57 @@ export class ForgetPasswordComponent {
 step1:boolean=true;
 step2:boolean=false;
 step3:boolean=false;
-
-constructor(private _ForgetPassService:ForgetPassService , private toaster:ToastrService){}
-
-
+email:string ='';
+constructor(private _ForgetPassService:ForgetPassService , private toaster:ToastrService , private Router:Router){}
 forgetPassForm:FormGroup = new FormGroup({
   email:new FormControl('',[Validators.required,Validators.email])
 })
-resetCode:FormGroup = new FormGroup({
+resetCodeForm:FormGroup = new FormGroup({
   resetCode:new FormControl('',[Validators.required])
 })
-resetPassword:FormGroup = new FormGroup({
+resetPasswordForm:FormGroup = new FormGroup({
   newPassword:new FormControl('',[Validators.required])
 })
 forgetPassword():void{
-  // this.step1 = false;
-  // this.step2=true;
   let userEmail = this.forgetPassForm.value;
+  this.email= userEmail.email;
   this._ForgetPassService.forgotPassword(userEmail).subscribe({
     next:(respons)=>{
       this.toaster.success(respons.message);
-      console.log(respons)
+      this.step1 = false;
+      this.step2=true;
     },
     error:(err)=>{
-      console.log(err)
+      this.toaster.error(err.error.message);
     }
   })
-  console.log('step1')
 }
 resetCodeFun():void{
-  this.step2=false;
-  this.step3=true;
-  console.log('step2')
+  let resetCode = this.resetCodeForm.value;
+  this._ForgetPassService.verifyResetCode(resetCode).subscribe({
+    next: respons => {
+      this.toaster.success(respons.status);
+      this.step2=false;
+      this.step3=true;
+    },
+    error: err =>{
+      this.toaster.error(err.error.message);
+    }
+  })
 }
 resetpass():void{
-  console.log('step3')
+  let newpasswordObj = this.resetPasswordForm.value;
+  newpasswordObj.email = this.email
+  this._ForgetPassService.rsetPassword(newpasswordObj).subscribe({
+    next: respons =>{
+      if(respons.token){
+        localStorage.setItem('eToken', respons.token )
+        this.Router.navigate(['/home'])
+      }
+    },
+    error: err =>{
+      this.toaster.error(err.error.message);
+    }
+  })
 }
 }

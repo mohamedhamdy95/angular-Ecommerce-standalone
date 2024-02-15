@@ -17,8 +17,14 @@
                 <p class="mb-0" *ngIf="loginForm.get('password')?.getError('pattern')" >password min length 6</p>
             </div>
         </div>
-        <button [disabled]="loginForm.invalid"class="main-btn">login <span *ngIf="isLoading" ><i class="fa-solid fa-spinner fa-spin"></i></span>
-        </button>
+
+        <div class="d-flex align-items-center justify-content-between">
+            <button [disabled]="loginForm.invalid"class="main-btn">login <span *ngIf="isLoading" ><i class="fa-solid fa-spinner fa-spin"></i></span>
+            </button>
+            <a routerLink="/forget" class="link-primary cursor-pointer" >Forget Password</a>
+
+        </div>
+
     </form>
     <div *ngIf="errMesg" class="alert alert-danger w-50 mx-auto mb-0 text-center">{{errMesg}}</div>
     <div *ngIf="sucMesg" class="alert alert-success w-50 mx-auto mb-0 text-center">Registration Done</div>
