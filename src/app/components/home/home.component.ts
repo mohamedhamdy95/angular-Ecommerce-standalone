@@ -8,18 +8,20 @@ import { Category } from 'src/app/core/interface/category';
 import { RouterLink } from '@angular/router';
 import { CartService } from 'src/app/core/service/cart.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { SearchPipe } from 'src/app/core/pipe/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
-    imports: [CommonModule, CuttextPipe,CarouselModule ,RouterLink]
+    imports: [CommonModule, CuttextPipe,SearchPipe,CarouselModule,FormsModule ,RouterLink]
 })
 export class HomeComponent implements OnInit {
   productList:Product[]=[]
   categorisList:Category[]=[]
+  searchValue:string='';
 constructor(private _ProductService:ProductService , private _CartService:CartService , private toaster:ToastrService , private _Renderer2:Renderer2){}
 ngOnInit(): void{
   this._ProductService.getProduct().subscribe({
