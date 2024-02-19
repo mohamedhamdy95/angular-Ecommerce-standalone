@@ -1,1 +1,11 @@
-<p>categories works!</p>
+<section class="py-5">
+    <h2 class="text-capitalize my-5 fw-bolder">all <span class="text-main">categories</span></h2>
+    <div class="row g-4">
+        <div *ngFor="let item of catList" class="col-md-4 col-sm-6 col-lg-3">
+            <div class="border border-success rounded shadow">
+                <img [src]="item.image" class="w-100" [alt]="item.name" height="600">
+                <h3 class="py-4 text-main text-center">{{item.name}}</h3>
+            </div>
+        </div>
+    </div>
+</section>

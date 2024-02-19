@@ -41,8 +41,11 @@
               <p class="text-main text-center small">{{product.category.name}}</p>
               <h5 class="fw-bold text-center">{{product.title | cuttext:2}}</h5>
               <div class="small mt-2 d-flex align-items-center justify-content-between">
-                <div>{{product.price | currency}}</div>
-                <div>{{product.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></div>
+                <div>{{product.price | currency}}</div>        
+                <div>
+                  <i [class.rating-color]="product.ratingsAverage >= star" *ngFor="let star  of [1,2,3,4,5]" class="fa-solid fa-star"></i>
+                  {{product.ratingsAverage}} 
+                </div>
               </div>
           </header>
           <footer>

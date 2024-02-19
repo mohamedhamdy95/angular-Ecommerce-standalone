@@ -25,8 +25,8 @@
           >
             <div>{{ product.price | currency }}</div>
             <div>
-              {{ product.ratingsAverage }}
-              <i class="fa-solid fa-star rating-color"></i>
+              <i [class.rating-color]="product.ratingsAverage >= star" *ngFor="let star  of [1,2,3,4,5]" class="fa-solid fa-star"></i>
+              {{product.ratingsAverage}} 
             </div>
           </div>
         </header>

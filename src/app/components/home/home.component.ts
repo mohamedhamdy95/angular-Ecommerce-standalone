@@ -67,7 +67,7 @@ categoreyOptions: OwlOptions = {
   },
   nav: false
 }
-mainOptions: OwlOptions = {
+mainOptions: OwlOptions = { 
   loop: true,
   mouseDrag: true,
   touchDrag: true,
