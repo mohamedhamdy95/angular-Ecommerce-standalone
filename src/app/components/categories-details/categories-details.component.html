@@ -1,1 +1,11 @@
-<p>categories-details works!</p>
+<section *ngIf="categoreyData.name" class="w-75 mx-auto rounded shadow border my-5 p-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <img class="w-100" [src]="categoreyData.image" [alt]="categoreyData.name">
+        </div>
+        <div class="col-md-8">
+            <h3 class="text-main">{{categoreyData.name}}</h3>
+            <p>{{categoreyData.slug}}</p>
+        </div>
+    </div>
+</section>

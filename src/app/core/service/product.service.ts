@@ -13,10 +13,13 @@ export class ProductService {
   getProduct(pageNum:number=1 ):Observable<any>{
     return this._HttpClient.get(this.baseUrl+`products?page=${pageNum}`)
   }
+  getProductDetails(id:any):Observable<any>{
+    return this._HttpClient.get(this.baseUrl+`products/${id}`)
+  }
   getCategories():Observable<any>{
     return this._HttpClient.get(this.baseUrl+`categories`)
   }
-  getProductDetails(id:any):Observable<any>{
-    return this._HttpClient.get(this.baseUrl+`products/${id}`)
+  getCategoriesDetails(id:any):Observable<any>{
+    return this._HttpClient.get(this.baseUrl+`categories/${id}`)
   }
 }

@@ -10,6 +10,7 @@ const routes: Routes = [
     {path:'',redirectTo:'home',pathMatch:'full'},
     {path:'home',loadComponent:()=> import('./components/home/home.component').then((c)=>c.HomeComponent),title:"Home"},
     {path:'categories',loadComponent:()=> import('./components/categories/categories.component').then((c)=>c.CategoriesComponent),title:"Categories"},
+    {path:'categoriesdetails/:id',loadComponent:()=> import('./components/categories-details/categories-details.component').then((c)=>c.CategoriesDetailsComponent),title:"Category Datails"},
     {path:'brand',loadComponent:()=> import('./components/brands/brands.component').then((c)=>c.BrandsComponent),title:"Brand"},
     {path:'cart',loadComponent:()=> import('./components/cart/cart.component').then((c)=>c.CartComponent),title:"Cart"},
     {path:'products',loadComponent:()=> import('./components/products/products.component').then((c)=>c.ProductsComponent),title:"Products"},
