@@ -13,6 +13,7 @@ const routes: Routes = [
     {path:'categoriesdetails/:id',loadComponent:()=> import('./components/categories-details/categories-details.component').then((c)=>c.CategoriesDetailsComponent),title:"Category Datails"},
     {path:'brand',loadComponent:()=> import('./components/brands/brands.component').then((c)=>c.BrandsComponent),title:"Brand"},
     {path:'cart',loadComponent:()=> import('./components/cart/cart.component').then((c)=>c.CartComponent),title:"Cart"},
+    {path:'wishlist',loadComponent:()=> import('./components/wishlist/wishlist.component').then((c)=>c.WishlistComponent),title:"Wish List"},
     {path:'products',loadComponent:()=> import('./components/products/products.component').then((c)=>c.ProductsComponent),title:"Products"},
     {path:'details/:id',loadComponent:()=> import('./components/product-detauls/product-detauls.component').then((c)=>c.ProductDetaulsComponent),title:"Details"},
     {path:'payment/:id',loadComponent:()=> import('./components/payment/payment.component').then((c)=>c.PaymentComponent),title:"Payment"},

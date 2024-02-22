@@ -10,6 +10,7 @@ import { CartService } from 'src/app/core/service/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { SearchPipe } from 'src/app/core/pipe/search.pipe';
 import { FormsModule } from '@angular/forms';
+import { WishlistService } from 'src/app/core/service/wishlist.service';
 
 @Component({
     selector: 'app-home',
@@ -19,10 +20,11 @@ import { FormsModule } from '@angular/forms';
     imports: [CommonModule, CuttextPipe,SearchPipe,CarouselModule,FormsModule ,RouterLink]
 })
 export class HomeComponent implements OnInit {
-  productList:Product[]=[]
-  categorisList:Category[]=[]
+  productList:Product[]=[];
+  categorisList:Category[]=[];
+  wishListData:string[]=[];
   searchValue:string='';
-constructor(private _ProductService:ProductService , private _CartService:CartService , private toaster:ToastrService , private _Renderer2:Renderer2){}
+constructor(private _ProductService:ProductService , private _CartService:CartService,private _WishlistService:WishlistService , private toaster:ToastrService , private _Renderer2:Renderer2){}
 ngOnInit(): void{
   this._ProductService.getProduct().subscribe({
     next:(respons)=>{
@@ -38,6 +40,14 @@ ngOnInit(): void{
       this.categorisList = respons.data;
         console.log(this.categorisList)
     },
+  })
+
+  this._WishlistService.gitWishList().subscribe({
+    next:(response)=>{
+      this.wishListData=response.data
+      const newData = response.data.map((item:any)=> item._id)
+      this.wishListData= newData;
+    }
   })
 }
 categoreyOptions: OwlOptions = {
@@ -67,7 +77,7 @@ categoreyOptions: OwlOptions = {
   },
   nav: false
 }
-mainOptions: OwlOptions = { 
+mainOptions: OwlOptions = {
   loop: true,
   mouseDrag: true,
   touchDrag: true,
@@ -101,5 +111,36 @@ addProductToCart(id:any , ele:HTMLButtonElement ):void{
     }
   })
 }
+
+// add product to wish list
+
+addItemToWishList(id:any):void{
+  this._WishlistService.addToWishList(id).subscribe({
+    next:(respons)=>{
+      this.toaster.success(respons.message);
+      this.wishListData = respons.data;
+      console.log( this.wishListData)
+    },
+    error:(err)=>{
+      console.log(err)
+    }
+  })
+}
+
+// add product to wish list
+
+removeFromWishList(id:any):void{
+  this._WishlistService.removeItemFromWishList(id).subscribe({
+  next:(respons)=>{
+      this.toaster.error(respons.message);
+      this.wishListData = respons.data;
+      console.log( this.wishListData)
+    },
+    error:(err)=>{
+      console.log(err)
+    }
+  })
+}
+
 
 }

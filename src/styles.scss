@@ -41,6 +41,22 @@ font-family: $fontFamily;
   border-radius: 5px;
   padding: 4px;
   box-shadow: $shadow;
+  position: relative;
+  overflow: hidden;
+  &:hover{
+    .heart{
+      right: 10px;
+    }
+  }
+  .heart{
+    position: absolute;
+    top: 20px;
+    right: -50px;
+    z-index: 99;
+    cursor: pointer;
+    transition: right 0.5s;
+    }
+
 }
 .product:hover{
 box-shadow: $shadow !important;
@@ -94,3 +110,4 @@ a , a:hover{
     cursor: not-allowed;
 }
 }
+

@@ -1,66 +1,11 @@
-<section class="">
-  <div class="row g-0">
-    <div class="col-md-9">
-      <owl-carousel-o [options]="mainOptions">
-        <ng-template carouselSlide>
-          <img height="500" src="./assets/img/slider-1.jpeg" alt="slider" />
-        </ng-template>
-        <ng-template carouselSlide>
-          <img height="500" src="./assets/img/slider-2.jpeg" alt="slider" />
-        </ng-template>
-        <ng-template carouselSlide>
-          <img height="500" src="./assets/img/slider-3.png" alt="slider" />
-        </ng-template>
-      </owl-carousel-o>
-    </div>
-    <div class="col-md-3">
-      <img
-        height="250"
-        src="./assets/img/slider-image-1.jpeg"
-        class="w-100"
-        alt="slider"
-      />
-      <img
-        height="250"
-        src="./assets/img/slider-image-2.jpeg"
-        class="w-100"
-        alt="slider"
-      />
-    </div>
-  </div>
-</section>
-<section *ngIf="categorisList.length > 0">
-  <h2 class="text-capitalize my-5 fw-bolder">
-    popular <span class="text-main">categories</span>
-  </h2>
-  <owl-carousel-o [options]="categoreyOptions">
-    <ng-container *ngFor="let category of categorisList">
-      <ng-template carouselSlide>
-        <img
-          height="400"
-          [src]="category.image"
-          [alt]="category.name"
-          [title]="category.name"
-        />
-      </ng-template>
-    </ng-container>
-  </owl-carousel-o>
-</section>
 <section class="pb-5" *ngIf="productList.length > 0">
   <h2 class="text-capitalize my-5 fw-bolder">
     popular <span class="text-main">products</span>
   </h2>
-  <input
-    class="form-control form-control-sm w-75 mx-auto mb-4"
-    placeholder="Search..."
-    type="text"
-    [(ngModel)]="searchValue"
-  />
+
   <div class="row g-4">
     <div
-      *ngFor="
-        let product of productList | search : searchValue | slice : 0 : 24
-      "
+      *ngFor="let product of productList"
       class="col-sm-6 col-md-4 col-lg-3 col-xl-2"
     >
       <div class="h-100 product">

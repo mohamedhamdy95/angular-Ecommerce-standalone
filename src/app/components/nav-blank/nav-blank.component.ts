@@ -11,9 +11,6 @@ import { CartService } from 'src/app/core/service/cart.service';
   styleUrls: ['./nav-blank.component.scss']
 })
 export class NavBlankComponent implements OnInit {
-
-
-
   cartNum:number=0;
   constructor(private _Router:Router , private _CartService:CartService , private _Renderer2:Renderer2){}
 

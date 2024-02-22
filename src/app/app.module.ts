@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { MyhttpInterceptor } from './core/interceptors/myhttp.interceptor';
 import { LoagingInterceptor } from './core/interceptors/loaging.interceptor';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
